@@ -65,11 +65,20 @@ public class YandexWeatherUiTest {
     @Test
     public void shouldGetWeather() throws InterruptedException {
         com.codeborne.selenide.Selenide.open("https://стопкоронавирус.рф");
-        $(linkText("Подробные данные"))
+        $(By.linkText("Подробные данные"))
             .shouldBe(visible)
                 .click();
 
+//        MainPage mp = new MainPage(); HeaderElement
+//        DetailsPage dp = mp.getDetails();
+
+        // #canvas
+        // //*[@id="canvas"]
+        // /html/body/div[1]/canvas
+
         $(By.tagName("body")).screenshot();
-//        Thread.sleep(10_000);
+//        Thread.sleep(10_000)
+
+
     }
 }
