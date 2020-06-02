@@ -14,10 +14,13 @@ import static org.mockito.Mockito.when;
 public class ReportingTest {
     @Test
     public void shouldGetZeroReportWhenBranchAndClientEmpty() {
-        BranchRepository branchRepositoryStub = mock(BranchRepository.class);
         Branch branchStub = mock(Branch.class);
+        when(branchStub.getName()).thenReturn("TEST BRANCH");
         when(branchStub.getClients()).thenReturn(Collections.emptySet());
-        when(branchRepositoryStub.getBranches()).thenReturn(Arrays.asList(branchStub));
+
+        BranchRepository branchRepositoryStub = mock(BranchRepository.class);
+        when(branchRepositoryStub.getBranches())
+                .thenReturn(Arrays.asList(branchStub));
 
         Reporting reportingSut = new Reporting(branchRepositoryStub);
 

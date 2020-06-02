@@ -6,8 +6,11 @@ import static java.util.Collections.unmodifiableCollection;
 
 public class Branch {
     private Collection<Account> accounts; //TODO impl
+    private String name;
 
-    public Branch(Collection<Account> accounts) {
+
+    public Branch(String name, Collection<Account> accounts) {
+        this.name = name;
         this.accounts = accounts;
     }
 
@@ -22,5 +25,9 @@ public class Branch {
 
     public Collection<Client> getClients() {
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

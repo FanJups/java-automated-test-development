@@ -1,7 +1,9 @@
 package com.acme.banking.dbo.service;
 
 import com.acme.banking.dbo.BranchRepository;
-import com.acme.banking.dbo.domain.Branch;
+
+import static java.lang.System.lineSeparator;
+import static java.util.stream.Collectors.joining;
 
 public class Reporting {
     private BranchRepository branchRepository;
@@ -14,6 +16,12 @@ public class Reporting {
      * @return Markdown report for all branches, clients, accounts
      */
     public String getReport() {
-        return null;
+        return branchRepository.getBranches().stream()
+                .map(branch -> {
+                    return "# " + branch.getName() + lineSeparator() +
+                            "## " + (branch.getClients().isEmpty() ? "[empty]" : "");
+
+                })
+                .collect(joining("---" + lineSeparator()));
     }
 }
